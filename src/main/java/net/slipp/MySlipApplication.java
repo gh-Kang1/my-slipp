@@ -9,5 +9,5 @@ public class MySlipApplication {
     public static void main(String[] args) {
         SpringApplication.run(MySlipApplication.class, args);
     }
-
+ 
 }
