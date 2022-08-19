@@ -48,3 +48,6 @@
 * 연습 vimGolf.com 터미널에 설치하여 터미널 내에서 연습 가능
 
 * 로그인
+* mustache를 통한 세션 적용 session attribute의 내용을 model에 추가함 
+  * spring.mustache.servlet.expose-session-attributes=true
+  * spring.mustache.servlet.expose-request-attributes=true <- request attribute에 값을 model에 추가함
