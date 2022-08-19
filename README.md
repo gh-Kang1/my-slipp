@@ -35,3 +35,16 @@
 
 * url이동으로 정적 자료에 위치가 달라질경우 include하고 있는 파일이 상대경로라면 위치가 맞지않아서 파일 못불러올수 있으니 절대경로로 설정하자
 
+* 맥에 host 등록하여 ip로 직접 접속하지 않고 hostName으로 접근하는 방법
+* sudo vi /etc/hosts
+  * ip주소 [hostName]
+  * hostName이 ip주소에 역활을 하여 접속할수있다.
+  * host 변경시 도메인 접근도 아이피가 아닌 설정 hostName:port로 접근 가능하다.
+
+* mustache include기능이 jar 파일로 배포했을때 열리지 않는 문제
+  * /mvnw spring-boot:run & 메이븐에서 스프링부트를 바로 컴파일에서 여는 문제로 해결
+
+* vi 단축키 참고 블로그: https://blog.outsider.ne.kr/540
+* 연습 vimGolf.com 터미널에 설치하여 터미널 내에서 연습 가능
+
+* 로그인

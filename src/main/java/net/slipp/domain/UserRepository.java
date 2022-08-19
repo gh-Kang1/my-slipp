@@ -10,4 +10,6 @@ public interface UserRepository extends JpaRepository<Users,Long> {
     public default Users findOne(Long id) {
         return findById(id).orElse(null);
     }
+
+    Users findByUserId(String userId);
 }
