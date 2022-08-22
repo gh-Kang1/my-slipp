@@ -51,3 +51,18 @@
 * mustache를 통한 세션 적용 session attribute의 내용을 model에 추가함 
   * spring.mustache.servlet.expose-session-attributes=true
   * spring.mustache.servlet.expose-request-attributes=true <- request attribute에 값을 model에 추가함
+
+* 객체에 데이터에 대한 로직은 객체에게 물어봐야함
+  * 객체에 데이터를 꺼내서 확인하는것은 좋지 않음
+
+* 리소스파일 jar 배포시 문제점으로 인한 war파일로 배포하는법
+  * packaing war -> 외장 톰캣 dependency 추가 후 외장 톰캣 초기화를 위한 SpringBootServletInitializer 상속받은 클래스 생성
+    * return builder.sources(MySlipApplication.class); 서버 시작할때 초기화를 담당하는 클래스명을 지정
+~~~
+<packaging>war</packaging>
+...
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+~~~

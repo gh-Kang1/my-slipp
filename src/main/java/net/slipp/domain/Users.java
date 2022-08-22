@@ -60,6 +60,22 @@ public class Users {
         this.email = email;
     }
 
+    public boolean matchId(Long id) {
+        if (id == null) {
+            return false;
+        }
+
+        return this.id.equals(id);
+    }
+
+    public boolean matchPassword(String newPassword) {
+        if (newPassword == null) {
+            return false;
+        }
+
+        return newPassword.equals(password);
+    }
+
     public void update(Users newUser) {
         this.password = newUser.password;
         this.name = newUser.name;
