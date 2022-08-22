@@ -66,3 +66,19 @@
     <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
 ~~~
+
+* **배포시 외부 톰캣을 이용 및 war파일 배포**
+  * 웹 자원이 많을 경우 war파일로 배포하는게 좋다
+  * wget 으로 버전에 맞는 톰캣을 다운
+  * ./startup.sh 톰캣서버실행
+  * ./sutdown.sh 톰캣서버종료
+  * tomcat에서 배포할수 있는 디렉토리 webapps 디렉토리
+  * tomcat 폴더 내부에 ROOT-> 시작 페이지 (고양이 그림이 있는 프로젝트)
+    * 처음있는 ROOT를 지우고 ROOT이름으로  컴파일한 war 디렉토리를 넣어 배포할 수 있다.
+    ~~~
+    mv my-slip-0.0.1-SNAPSHOT ~/tomcat/webapps
+    mv my-slip-0.0.1-SNAPSHOT/ ROOT <- 컴파일한 디렉토리 명칭 ROOT로 변경
+    ~~~
+  * 하나의 톰캣은 여러개의 웹어플리케이션을 배포 할 수 있다.
+  * ROOT 외에 DOCS 여러 디렉토리가 있는데 해당 폴더명이 default path가 된다
+  * host:port/디렉토리 이름으로 해당 프로젝트 접근을 할 수 있다.
