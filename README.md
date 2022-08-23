@@ -82,3 +82,9 @@
   * 하나의 톰캣은 여러개의 웹어플리케이션을 배포 할 수 있다.
   * ROOT 외에 DOCS 여러 디렉토리가 있는데 해당 폴더명이 default path가 된다
   * host:port/디렉토리 이름으로 해당 프로젝트 접근을 할 수 있다.
+
+* html form 태그에서 put 과 delete 사용하기
+  1. properties에 restAPI에서도 hidden태그를 이용하여 사용하려면 해당 설정을 properties또는 bean에 등록하면 된다.
+  ~~~
+  spring.mvc.hiddenmethod.filter.enabled=true
+  ~~~

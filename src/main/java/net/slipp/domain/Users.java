@@ -3,12 +3,16 @@ package net.slipp.domain;
 import org.h2.engine.User;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "USERS")
 public class Users {
     @Id
     @GeneratedValue
     private Long id;
+
+    @OneToMany(mappedBy = "writerId")
+    private List<Question> question;
 
     @Column(unique = true)
     private String userId;
