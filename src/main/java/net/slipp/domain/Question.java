@@ -3,6 +3,8 @@ package net.slipp.domain;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Question {
@@ -11,11 +13,17 @@ public class Question {
     @GeneratedValue
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "fk_question_writer")
-    private Users writerId;
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_question_writer"))
+    private Users writer;
 
-    private String writer;
+    @OneToMany(mappedBy = "question")
+    @OrderBy("id ASC")
+    private List<Answer> answers;
+
+    @Column(name = "name")
+    private String writerId;
     private String title;
+    @Lob
     private String contents;
 
     private LocalDateTime createDate;
@@ -28,6 +36,18 @@ public class Question {
         return title;
     }
 
+    public Users getWriter() {
+        return writer;
+    }
+
+    public String getWriterId() {
+        return writerId;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
     public String getCreateDate() {
         if (this.createDate == null) {
             return "";
@@ -38,8 +58,8 @@ public class Question {
     public Question() {}
 
     public Question(Users user,String writer, String title, String contents) {
-        this.writerId = user;
-        this.writer = writer;
+        this.writer = user;
+        this.writerId = writer;
         this.title = title;
         this.contents = contents;
         this.createDate = LocalDateTime.now();
@@ -49,4 +69,9 @@ public class Question {
         this.title = title;
         this.contents = contents;
     }
+
+    public boolean isSameWriter(Users loginUser) {
+        return this.writer.equals(loginUser);
+    }
+
 }

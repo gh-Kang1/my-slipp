@@ -4,6 +4,7 @@ import org.h2.engine.User;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity(name = "USERS")
 public class Users {
@@ -11,7 +12,7 @@ public class Users {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(mappedBy = "writerId")
+    @OneToMany(mappedBy = "writer")
     private List<Question> question;
 
     @Column(unique = true)
@@ -84,5 +85,18 @@ public class Users {
         this.password = newUser.password;
         this.name = newUser.name;
         this.email = newUser.email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Users users = (Users) o;
+        return Objects.equals(id, users.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
