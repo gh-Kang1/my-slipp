@@ -1,5 +1,7 @@
 package net.slipp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.h2.engine.User;
 
 import javax.persistence.*;
@@ -10,15 +12,20 @@ import java.util.Objects;
 public class Users {
     @Id
     @GeneratedValue
+    @JsonProperty
     private Long id;
 
     @OneToMany(mappedBy = "writer")
     private List<Question> question;
 
     @Column(unique = true)
+    @JsonProperty
     private String userId;
+    @JsonIgnore
     private String password;
+    @JsonProperty
     private String name;
+    @JsonProperty
     private String email;
 
     public Users() {
