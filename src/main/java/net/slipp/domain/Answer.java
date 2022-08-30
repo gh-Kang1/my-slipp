@@ -53,6 +53,10 @@ public class Answer {
         return this.createDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
     }
 
+    public boolean isSameWriter(Users loginUser) {
+        return loginUser.equals(this.writer);
+    }
+
     public Answer() {
     }
 
@@ -75,4 +79,5 @@ public class Answer {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

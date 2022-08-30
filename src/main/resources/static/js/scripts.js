@@ -15,11 +15,11 @@ function addAnswer(e) {
       data : queryString,
       dataType : 'json' ,
       })
-      .done(function(data){
-        let answerTemplate = $("#answerTemplate").html();
-        let template = answerTemplate.format(data.writer.userId, data.createDate,data.contents,data.id,data.id);
-        $(".qna-comment-slipp-articles").prepend(template);
-        $("textarea[name=contents]").val('');
+      .done(function (json) {
+          let answerTemplate = $("#answerTemplate").html();
+          let template = answerTemplate.format(json.writer.userId, json.createDate,json.contents,json.question.id,json.id);
+          $(".qna-comment-slipp-articles").prepend(template);
+          $("textarea[name=contents]").val('');
       })
       .fail(function(xhr, status, errorThrown){
           console.log('xhr : ',xhr);
@@ -27,6 +27,16 @@ function addAnswer(e) {
           console.log('errorThrown : ',errorThrown);
 
       })
+}
+
+$(".delete-answer-form").click(deleteAnswer);
+
+function deleteAnswer(e) {
+    e.preventDefault();
+    let deleteBtn = $(this);
+    let url = deleteBtn.attr("action");
+    console.log('url : ',url)
+
 }
 
 String.prototype.format = function() {
